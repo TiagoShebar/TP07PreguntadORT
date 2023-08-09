@@ -18,16 +18,16 @@ public class HomeController : Controller
 
     public IActionResult Comenzar(string username, int dificultad, int categoria){
         if(Juego.CargarPartida(username, dificultad, categoria)){
-            return RedirecToAction("Jugar");
+            return RedirectToAction("Jugar");
         }
         else{
-            return RedirecToAction("ConfigurarJuego");
+            return RedirectToAction("ConfigurarJuego");
         }
     }
 
     public IActionResult Jugar(){
         ViewBag.Pregunta = Juego.ObtenerProximaPregunta();
-        if(Preguntas != null){
+        if(ViewBag.Pregunta != null){
             return View("Fin");
         }
         else{

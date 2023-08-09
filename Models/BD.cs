@@ -1,23 +1,25 @@
 using System.Data.SqlClient;
 using Dapper;
 
-static class BD
+ class BD
 {
 
-    private static string _connectionString = @"Server=localhost;DataBase=NombreBase;Trusted_Connection=True;";
+    private static string _connectionString = @"Server=localhost;DataBase=TP07PreguntadORT;Trusted_Connection=True;";
 
     public static List<Categoria> ObtenerCategorias(){
         string SQL = "SELECT * FROM Categorias";
+        List<Categoria> _ListadoCategorias;
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            List<Categoria> _ListadoCategorias = db.Query<Categoria>(SQL).ToList();
+            _ListadoCategorias = db.Query<Categoria>(SQL).ToList();
         }
         return _ListadoCategorias;
     }
 
-    public static List<Dificultad> ObtenerDificultades()(){
+    public static List<Dificultad> ObtenerDificultades(){
         string SQL = "SELECT * FROM Dificultades";
+        List<Dificultad> _ListadoDificultades;
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            List<Categoria> _ListadoDificultades = db.Query<Dificultad>(SQL).ToList();
+            _ListadoDificultades = db.Query<Dificultad>(SQL).ToList();
         }
         return _ListadoDificultades;
     }

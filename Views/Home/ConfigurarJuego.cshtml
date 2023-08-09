@@ -1,34 +1,30 @@
-<form action='@Url.Action("Comenzar")' method="get">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
-    @foreach(R)
-    <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option1">
-    <label class="form-check-label" for="inlineRadio1">Fácil</label>
-    </div>
+<form action='@Url.Action("Comenzar, new { }")' method="get">
+    <select class="form-select" aria-label="Default select example" required>
+            <option selected>Eliga la dificultad</option>
+            @foreach(Dificultad d in ViewBag.Dificultades){
+                <option value="@d.IdDificultad">@d.Nombre</option>
+            }
+            <option value="-1">Todas</option>
+    </select>
 
-    <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="2.inlineRadio1" value="option1">
-    <label class="form-check-label" for="inlineRadio1">Geografía</label>
-    </div>
-    <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="2.inlineRadio2" value="option2">
-    <label class="form-check-label" for="inlineRadio2">Historia</label>
-    </div>
-    <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="2.inlineRadio3" value="option3" disabled>
-    <label class="form-check-label" for="inlineRadio3">Ciencia</label>
-    </div>
-    <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="2.inlineRadio4" value="option4" disabled>
-    <label class="form-check-label" for="inlineRadio3">Deportes</label>
-    </div>
-    <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="2.inlineRadio5" value="option5" disabled>
-    <label class="form-check-label" for="inlineRadio3">Arte</label>
-    </div>
-    <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="2.inlineRadio5" value="option5" disabled>
-    <label class="form-check-label" for="inlineRadio3">Arte</label>
+    <select class="form-select" aria-label="Default select example" required>
+            <option selected>Eliga la categoría</option>
+            @foreach(Categoria c in ViewBag.Categorias){
+                <option value="@c.IdCategoria">@c.Nombre</option>
+            }
+            <option value="-1">Todas</option>
+    </select>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Nombre de usuario</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre">
     </div>
 
+    <div class="col-12">
+        <button class="btn btn-primary" type="submit">Ingresar</button>
+    </div>
 </form>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
